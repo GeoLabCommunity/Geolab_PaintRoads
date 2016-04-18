@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class GzebisScript : MonoBehaviour {
 
 
+
 	void Start () {
 	
 	}
@@ -25,7 +26,8 @@ public class GzebisScript : MonoBehaviour {
         gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "yvelazeCin";
 
         //var GameObjectPosition = gameObject.transform.position;
-        //gameObject.transform.position = new Vector3(GameObjectPosition.x, GameObjectPosition.y, -1);   
+        //gameObject.transform.position = new Vector3(GameObjectPosition.x, GameObjectPosition.y, -1);
+
     }
 
 
