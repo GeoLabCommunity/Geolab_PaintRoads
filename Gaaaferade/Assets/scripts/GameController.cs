@@ -8,6 +8,10 @@ public class GameController : MonoBehaviour {
 
     public List<GameObject> gzebi;
 
+    public static string TAG = "";
+    public static int ballTriggerNum = 0;
+    public static int ballListCount = 0;
+
 
 
     public GameObject button;
@@ -71,10 +75,10 @@ public class GameController : MonoBehaviour {
     
     public GameObject whiteJewelcase;
     public Sprite cyanishJewelcase;
-
+    public static GameController instance = null;
 
 	void Start () {
-       
+        instance = this;
 	}
 	
 	
@@ -84,7 +88,7 @@ public class GameController : MonoBehaviour {
 
 
 
-    public void onRoadMouseDown()
+    public  void onRoadMouseDown()
     {
 
 
@@ -95,8 +99,6 @@ public class GameController : MonoBehaviour {
 
                 gzebi[i].GetComponent<SpriteRenderer>().sortingLayerName = "Default";
 
-                //var GameObjectPosition = gzebi[i].transform.position;
-                //gzebi[i].transform.position = new Vector3(GameObjectPosition.x, GameObjectPosition.y, 0);
 
             }    
         }
@@ -106,23 +108,42 @@ public class GameController : MonoBehaviour {
 
 
 
-    public void changePicture()
+    public  void changePicture(string tag)
     {
+        Sprite _changeSprite;
+        GameObject _changeObject;
+        Color _roadColor;
+        print(tag);
+        switch(tag)
+        {
+            case "r":
+                _changeObject = whitePiano;
+                _changeSprite = redPiano;
+                _roadColor = new Color(255, 0, 0, 255);
+                break;
+            case "g":
+                _changeObject = whiteTelephone;
+                _changeSprite = greenTelephone;
+                _roadColor = new Color(66, 174, 81, 255);
+                break;
+            case "b":
+                _changeObject = whiteZeppelin;
+                _changeSprite = blueZeppelin;
+                _roadColor = new Color(0, 113, 188, 255);
+                break;
+            default:
+                _changeSprite = new Sprite(); 
+               _changeObject = new GameObject();
+               _roadColor = new Color(0, 0, 0, 0);
+              break;
+        }
 
-        //Instantiate(feradi, ufero.transform.position, ufero.transform.rotation);
-        whiteZeppelin.GetComponent<SpriteRenderer>().sprite = blueZeppelin;
-        button.GetComponent<Button>().interactable = false;
-        gzebi[0].GetComponent<SpriteRenderer>().color = new Color32(0, 113, 188, 255); ;
-        //#0071BCFF;
+        _changeObject.GetComponent<SpriteRenderer>().sprite = _changeSprite as Sprite;
+        GameObject.FindGameObjectWithTag(tag).GetComponent<SpriteRenderer>().color = _roadColor;
+        button.GetComponent<AudioSource>().Play();
       
        
     }
-
-    public void yay()
-    {
-        button.GetComponent<AudioSource>().Play();
-    }
-
 
     // ტურს რომ გაივლის, ამოვიდეს შეტყობინება, რომ შეუძლია, შემდეგ ლეველზე გადავიდეს.
     //ერთი ღილაკით შეუძლია, ისევ ეს ტური გაიაროს, მეორეთი - გადავიდეს შემდეგ ტურზე.
