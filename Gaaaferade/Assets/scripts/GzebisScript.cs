@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class GzebisScript : MonoBehaviour {
 
-
+ 
 
 	void Start () {
 	
@@ -21,12 +21,19 @@ public class GzebisScript : MonoBehaviour {
 
     void OnMouseDown()
     {
-        gameObject.GetComponent<GameController>().onRoadMouseDown();
 
-        gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "yvelazeCin";
+        if (!GameController.levelOver)
+        {
+            gameObject.GetComponent<GameController>().onRoadMouseDown();
 
-        //var GameObjectPosition = gameObject.transform.position;
-        //gameObject.transform.position = new Vector3(GameObjectPosition.x, GameObjectPosition.y, -1);
+            gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "yvelazeCin";
+
+            //var GameObjectPosition = gameObject.transform.position;
+            //gameObject.transform.position = new Vector3(GameObjectPosition.x, GameObjectPosition.y, -1);
+        }
+      
+
+        
 
     }
 

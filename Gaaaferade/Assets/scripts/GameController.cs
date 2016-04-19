@@ -8,13 +8,70 @@ public class GameController : MonoBehaviour {
 
     public List<GameObject> gzebi;
 
-    public GameObject ufero;
-    public GameObject feradi;
+
+
     public GameObject button;
 
     public List<Button> bluePathButtons;
     public GameObject levelIsOver1;
     public GameObject levelIsOver2;
+
+    public static bool levelOver = false;
+
+
+    // პირველი ტურის ობიექტები
+
+
+    public GameObject whiteZeppelin;
+    public Sprite blueZeppelin;
+
+    public GameObject whiteTelephone;
+    public Sprite greenTelephone;
+
+    public GameObject whitePiano;
+    public Sprite redPiano;
+
+
+
+    // მეორე ტურის ობიექტები
+
+
+    public GameObject whiteAirplane;
+    public Sprite orangeAirplane;
+
+    public GameObject whiteBinoculars;
+    public Sprite lightBlueBinoculars;
+
+    public GameObject whiteFan;
+    public Sprite darkGreenFan;
+
+
+    public GameObject whiteHeart;
+    public Sprite purpleHeart;
+
+
+
+
+    // მესამე ტურის ობიექტები
+
+
+    public GameObject whiteBook;
+    public Sprite yellowBook;
+
+    public GameObject whiteGlasses;
+    public Sprite pinkGlasses;
+
+    public GameObject whiteLamp;
+    public Sprite greenLamp;
+
+
+    public GameObject whiteGloves;
+    public Sprite darkRedGloves;
+
+    
+    public GameObject whiteJewelcase;
+    public Sprite cyanishJewelcase;
+
 
 	void Start () {
        
@@ -29,24 +86,31 @@ public class GameController : MonoBehaviour {
 
     public void onRoadMouseDown()
     {
-        for (int i = 0; i < gzebi.Count; i++)
+
+
+        if (levelOver == false)
         {
+            for (int i = 0; i < gzebi.Count; i++)
+            {
 
-            gzebi[i].GetComponent<SpriteRenderer>().sortingLayerName = "Default";
+                gzebi[i].GetComponent<SpriteRenderer>().sortingLayerName = "Default";
 
-            //var GameObjectPosition = gzebi[i].transform.position;
-            //gzebi[i].transform.position = new Vector3(GameObjectPosition.x, GameObjectPosition.y, 0);
+                //var GameObjectPosition = gzebi[i].transform.position;
+                //gzebi[i].transform.position = new Vector3(GameObjectPosition.x, GameObjectPosition.y, 0);
 
+            }    
+        }
 
-        }      
+     
     }
 
 
 
     public void changePicture()
     {
-       
-        Instantiate(feradi, ufero.transform.position, ufero.transform.rotation);
+
+        //Instantiate(feradi, ufero.transform.position, ufero.transform.rotation);
+        whiteZeppelin.GetComponent<SpriteRenderer>().sprite = blueZeppelin;
         button.GetComponent<Button>().interactable = false;
         gzebi[0].GetComponent<SpriteRenderer>().color = new Color32(0, 113, 188, 255); ;
         //#0071BCFF;
@@ -78,6 +142,8 @@ public class GameController : MonoBehaviour {
 
         levelIsOver1.SetActive(true);
         levelIsOver2.SetActive(true);
+
+        levelOver = true;
 
     }
 
@@ -128,6 +194,11 @@ public class GameController : MonoBehaviour {
         //Application.LoadLevel(2);
 
         SceneManager.LoadScene(3);
+    }
+
+
+    public void exitInterLevelText() {
+        levelOver = false;
     }
 
 
