@@ -12,6 +12,11 @@ public class GameController : MonoBehaviour {
     public static string TAG = "";
     public static int ballTriggerNum = 0;
     public static int ballListCount = 0;
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> origin/master
 
     public GameObject button;
 
@@ -115,6 +120,7 @@ public class GameController : MonoBehaviour {
         print(tag);
         switch(tag)
         {
+<<<<<<< HEAD
             case "red":
                 _changeObject = whitePiano;
                 _changeSprite = redPiano;
@@ -187,11 +193,29 @@ public class GameController : MonoBehaviour {
 			_roadColor = new Color32(246, 205, 218, 255);
 			break;
 			//
+=======
+            case "r":
+                _changeObject = whitePiano;
+                _changeSprite = redPiano;
+                _roadColor = new Color(255, 0, 0, 255);
+                break;
+            case "g":
+                _changeObject = whiteTelephone;
+                _changeSprite = greenTelephone;
+                _roadColor = new Color(66, 174, 81, 255);
+                break;
+            case "b":
+                _changeObject = whiteZeppelin;
+                _changeSprite = blueZeppelin;
+                _roadColor = new Color(0, 113, 188, 255);
+                break;
+>>>>>>> origin/master
             default:
                 _changeSprite = new Sprite(); 
                _changeObject = new GameObject();
                _roadColor = new Color(0, 0, 0, 0);
               break;
+<<<<<<< HEAD
 
 
 
@@ -212,6 +236,17 @@ public class GameController : MonoBehaviour {
        
     }
 
+=======
+        }
+
+        _changeObject.GetComponent<SpriteRenderer>().sprite = _changeSprite as Sprite;
+        GameObject.FindGameObjectWithTag(tag).GetComponent<SpriteRenderer>().color = _roadColor;
+        button.GetComponent<AudioSource>().Play();
+      
+       
+    }
+
+>>>>>>> origin/master
     // ტურს რომ გაივლის, ამოვიდეს შეტყობინება, რომ შეუძლია, შემდეგ ლეველზე გადავიდეს.
     //ერთი ღილაკით შეუძლია, ისევ ეს ტური გაიაროს, მეორეთი - გადავიდეს შემდეგ ტურზე.
     // თან, გზები უბრუნდება საწყის, დეფაულტ პოზიციას (რომ ამ შეტყობინებაზე მაღლა არ იდგეს არცერთი გზა)

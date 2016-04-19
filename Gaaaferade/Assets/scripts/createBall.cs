@@ -11,7 +11,11 @@ public class createBall : MonoBehaviour {
     Vector3 currentPos;
     List <GameObject> balls;
     bool isMouseDown = false;
+<<<<<<< HEAD
     public float BornRad = 0.5f;
+=======
+    public float BornRad = 0.1f;
+>>>>>>> origin/master
 
 
 	// Use this for initialization
